@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14D87h" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Yod-Sw-HGW">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+    </dependencies>
+    <scenes>
+        <!--Intro Controller-->
+        <scene sceneID="sxJ-k3-be3">
+            <objects>
+                <viewController id="Yod-Sw-HGW" customClass="IntroController" customModule="FrameworksPlayground" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="UF4-P6-Icd"/>
+                        <viewControllerLayoutGuide type="bottom" id="wuU-7Q-vEz"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="fWy-bt-c03">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qbt-m3-vz0" customClass="SquareButton" customModule="FrameworksPlayground" customModuleProvider="target">
+                                <rect key="frame" x="180" y="155" width="120" height="120"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="J0Q-Su-2Ze"/>
+                                    <constraint firstAttribute="width" constant="120" id="nhT-U8-Hgp"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="buttonTap" destination="Yod-Sw-HGW" eventType="touchUpInside" id="3Rg-04-R6E"/>
+                                </connections>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AdF-vd-cqM" customClass="CircleButton" customModule="FrameworksPlayground" customModuleProvider="target">
+                                <rect key="frame" x="226" y="316" width="120" height="120"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="7FD-ur-8Yd"/>
+                                    <constraint firstAttribute="width" constant="120" id="ZG3-9q-YUg"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="gesturesTap" destination="Yod-Sw-HGW" eventType="touchUpInside" id="2qK-pb-n0r"/>
+                                </connections>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ct9-fE-dyp" customClass="TriangleButton" customModule="FrameworksPlayground" customModuleProvider="target">
+                                <rect key="frame" x="303" y="181" width="120" height="120"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="Ozi-SV-G0J"/>
+                                    <constraint firstAttribute="width" constant="120" id="bdk-yd-NTF"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="dynamicsButtonTap" destination="Yod-Sw-HGW" eventType="touchUpInside" id="F9l-im-ORA"/>
+                                </connections>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.33603607489999998" blue="0.020313907369999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="centerY" secondItem="AdF-vd-cqM" secondAttribute="centerY" constant="-76" id="70m-Do-7jg"/>
+                            <constraint firstAttribute="centerY" secondItem="qbt-m3-vz0" secondAttribute="centerY" constant="85" id="7VY-5b-235"/>
+                            <constraint firstAttribute="centerX" secondItem="AdF-vd-cqM" secondAttribute="centerX" constant="14" id="F3n-r7-Zgc"/>
+                            <constraint firstAttribute="centerX" secondItem="qbt-m3-vz0" secondAttribute="centerX" constant="60" id="epX-4H-eol"/>
+                            <constraint firstAttribute="centerY" secondItem="ct9-fE-dyp" secondAttribute="centerY" constant="59" id="guF-3R-MGW"/>
+                            <constraint firstAttribute="centerX" secondItem="ct9-fE-dyp" secondAttribute="centerX" constant="-63" id="sOJ-nz-YjI"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="circleControl" destination="AdF-vd-cqM" id="s2b-HU-upP"/>
+                        <outlet property="squareControl" destination="qbt-m3-vz0" id="lGm-cR-JaW"/>
+                        <outlet property="triangleControl" destination="ct9-fE-dyp" id="all-MO-wc2"/>
+                        <outlet property="triangleHeight" destination="Ozi-SV-G0J" id="sRu-gt-wLx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="w2s-Cu-3sM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="313" y="249"/>
+        </scene>
+    </scenes>
+</document>

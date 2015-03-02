@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14D87h" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="m7a-20-Fal">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Dynamic Intro-->
+        <scene sceneID="8HW-XA-jFC">
+            <objects>
+                <viewController id="m7a-20-Fal" customClass="DynamicIntro" customModule="FrameworksPlayground" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ui9-An-b7b"/>
+                        <viewControllerLayoutGuide type="bottom" id="djL-ZG-jep"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="B3h-Sc-nJc">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WWn-h5-Et1">
+                                <rect key="frame" x="277" y="550" width="46" height="30"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dap-Gp-fE9">
+                                <rect key="frame" x="16" y="28" width="35" height="30"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="buttonTap" destination="m7a-20-Fal" eventType="touchUpInside" id="a1S-CI-RUB"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Dap-Gp-fE9" firstAttribute="top" secondItem="ui9-An-b7b" secondAttribute="bottom" constant="8" id="DOq-oE-aTu"/>
+                            <constraint firstItem="djL-ZG-jep" firstAttribute="top" secondItem="WWn-h5-Et1" secondAttribute="bottom" constant="20" id="bvX-J6-Rsn"/>
+                            <constraint firstAttribute="centerX" secondItem="WWn-h5-Et1" secondAttribute="centerX" id="eas-Lu-l8u"/>
+                            <constraint firstItem="Dap-Gp-fE9" firstAttribute="leading" secondItem="B3h-Sc-nJc" secondAttribute="leadingMargin" id="z3P-zh-ok7"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NFl-1p-iEO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="757" y="414"/>
+        </scene>
+    </scenes>
+</document>

@@ -1,0 +1,7 @@
+github "bromas/Architect"
+github "bromas/StrategicControllers"
+github "bromas/ApplicationViewController"
+github "bromas/bccoalescing"
+github "thoughtbot/runes"
+github "thoughtbot/argo"
+github "Alamofire/Alamofire"
