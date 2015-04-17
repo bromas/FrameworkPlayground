@@ -1,8 +1,8 @@
 //
-//  TableWithViewModel.swift
+//  TableWithViewModelG.swift
 //  FrameworksPlayground
 //
-//  Created by Brian Thomas on 3/4/15.
+//  Created by Brian Thomas on 4/15/15.
 //  Copyright (c) 2015 Brian Thomas. All rights reserved.
 //
 
@@ -11,15 +11,20 @@ import UIKit
 import StrategicControllers
 import Architect
 
-class TableViewWithModel : StrategicController, UITableViewDataSource, UITableViewDelegate {
+class TableViewWithModelG : StrategicController, UITableViewDelegate, UITableViewDataSource {
   
   @IBAction func tempButtonTap() { actionOnTempButtonTap() }
   var actionOnTempButtonTap : () -> Void = {
     
   }
   
-  @IBAction func buttonTap() { actionOnSelection(viewModel: self.viewModel!, indexPath: self.table.indexPathForSelectedRow()!.row) }
-  var actionOnSelection : (viewModel: TableViewModel, indexPath: Int) -> Void = { (tableViewModel, index) in
+  @IBAction func cellSelectedByTap() {
+    actionOnSelection(viewModel: self.viewModel,
+      cell: self.table.cellForRowAtIndexPath(self.table.indexPathForSelectedRow()!)!,
+      indexPath: self.table.indexPathForSelectedRow()!.row)
+  }
+  
+  var actionOnSelection : (viewModel: TableViewModel?, cell: UITableViewCell, indexPath: Int) -> Void = { (tableViewModel, cell, index) in
     
   }
   
@@ -27,6 +32,7 @@ class TableViewWithModel : StrategicController, UITableViewDataSource, UITableVi
   @IBOutlet var activityIndicator: UIActivityIndicatorView!
   var viewModel: TableViewModel?
   var cellIdentifier: String = "cellIdentifier"
+  var cellConfiguration: CellRegistrationConfiguration?
   
   func configure(#viewModel: TableViewModel) {
     self.viewModel = viewModel
@@ -35,14 +41,20 @@ class TableViewWithModel : StrategicController, UITableViewDataSource, UITableVi
     }
   }
   
+  func registerCellConfiguration(model: CellRegistrationConfiguration) {
+    cellConfiguration = model
+  }
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     if let foundTable = table {
+      cellIdentifier = cellConfiguration?.registerToTable(foundTable) ?? "cellIdentifer"
     } else {
       self.table = Architect.custom(UITableView(), inView: self.view) {
         Constrain.inset($0, with: [.Top: 0, .Right: 0, .Bottom: 0, .Left: 0])
         return
       }
+      cellIdentifier = cellConfiguration?.registerToTable(self.table) ?? "cellIdentifer"
       self.table.delegate = self
       self.table.dataSource = self
     }

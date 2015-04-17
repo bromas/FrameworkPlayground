@@ -16,6 +16,10 @@
 		D30E37E81AA7B3DC009F5BAD /* TablesIntroNavStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30E37E71AA7B3DC009F5BAD /* TablesIntroNavStrategy.swift */; };
 		D30E37EB1AA7B853009F5BAD /* TabelWithVMTablesStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30E37EA1AA7B853009F5BAD /* TabelWithVMTablesStrategy.swift */; };
 		D31039AA1AB48FAB00D432FA /* Alamofire+ArgoRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31039A91AB48FAB00D432FA /* Alamofire+ArgoRequest.swift */; };
+		D32BB8C61ADEFC5F004D1C71 /* TableWithViewModelG.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32BB8C51ADEFC5F004D1C71 /* TableWithViewModelG.swift */; };
+		D32BB8CE1AE03FC5004D1C71 /* CellRegistrationConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32BB8CD1AE03FC5004D1C71 /* CellRegistrationConfiguration.swift */; };
+		D32BB8D01AE15A8A004D1C71 /* AppNetPostRequestsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32BB8CF1AE15A8A004D1C71 /* AppNetPostRequestsManager.swift */; };
+		D32BB8D21AE1900C004D1C71 /* PostsTableViewModelWoven.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32BB8D11AE1900C004D1C71 /* PostsTableViewModelWoven.swift */; };
 		D32D5D921AA55B2C00AC8B97 /* OpenAndThroughAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32D5D911AA55B2C00AC8B97 /* OpenAndThroughAnimator.swift */; };
 		D32D5D961AA58B7E00AC8B97 /* TablesIntroController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32D5D951AA58B7E00AC8B97 /* TablesIntroController.swift */; };
 		D32D5D981AA58BE100AC8B97 /* Tables.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D32D5D971AA58BE100AC8B97 /* Tables.storyboard */; };
@@ -118,6 +122,10 @@
 		D30E37E71AA7B3DC009F5BAD /* TablesIntroNavStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TablesIntroNavStrategy.swift; sourceTree = "<group>"; };
 		D30E37EA1AA7B853009F5BAD /* TabelWithVMTablesStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabelWithVMTablesStrategy.swift; sourceTree = "<group>"; };
 		D31039A91AB48FAB00D432FA /* Alamofire+ArgoRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Alamofire+ArgoRequest.swift"; sourceTree = "<group>"; };
+		D32BB8C51ADEFC5F004D1C71 /* TableWithViewModelG.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableWithViewModelG.swift; sourceTree = "<group>"; };
+		D32BB8CD1AE03FC5004D1C71 /* CellRegistrationConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellRegistrationConfiguration.swift; sourceTree = "<group>"; };
+		D32BB8CF1AE15A8A004D1C71 /* AppNetPostRequestsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppNetPostRequestsManager.swift; sourceTree = "<group>"; };
+		D32BB8D11AE1900C004D1C71 /* PostsTableViewModelWoven.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostsTableViewModelWoven.swift; sourceTree = "<group>"; };
 		D32D5D911AA55B2C00AC8B97 /* OpenAndThroughAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenAndThroughAnimator.swift; sourceTree = "<group>"; };
 		D32D5D951AA58B7E00AC8B97 /* TablesIntroController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TablesIntroController.swift; sourceTree = "<group>"; };
 		D32D5D971AA58BE100AC8B97 /* Tables.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Tables.storyboard; sourceTree = "<group>"; };
@@ -263,6 +271,7 @@
 				D30E37EA1AA7B853009F5BAD /* TabelWithVMTablesStrategy.swift */,
 				D30E37DF1AA7AA55009F5BAD /* PersonTableViewModel.swift */,
 				D331B5C91AA9094B009CDE98 /* PostTableViewModel.swift */,
+				D32BB8D11AE1900C004D1C71 /* PostsTableViewModelWoven.swift */,
 			);
 			name = PersonTable;
 			sourceTree = "<group>";
@@ -271,10 +280,20 @@
 			isa = PBXGroup;
 			children = (
 				D39564241AB3870100D72CAA /* AppNetPostsResponse.swift */,
+				D32BB8CF1AE15A8A004D1C71 /* AppNetPostRequestsManager.swift */,
 				D34A08D31AA8A673003688C4 /* AppNetPost.swift */,
 				D3AA948F1AA8B9C3006431D5 /* AppNetUser.swift */,
 			);
 			name = AppNetModels;
+			sourceTree = "<group>";
+		};
+		D32BB8C41ADEFC49004D1C71 /* Table-ViewModel-Generic */ = {
+			isa = PBXGroup;
+			children = (
+				D32BB8C51ADEFC5F004D1C71 /* TableWithViewModelG.swift */,
+				D32BB8CD1AE03FC5004D1C71 /* CellRegistrationConfiguration.swift */,
+			);
+			name = "Table-ViewModel-Generic";
 			sourceTree = "<group>";
 		};
 		D341CAFC1AAF5DD60016157E /* PhantomScroll */ = {
@@ -356,6 +375,7 @@
 		D34477C61AA52022005BC0A3 /* Control */ = {
 			isa = PBXGroup;
 			children = (
+				D32BB8C41ADEFC49004D1C71 /* Table-ViewModel-Generic */,
 				D3FD4AB61AAE406500C26C64 /* ViewController.swift */,
 				D30E37D81AA793F6009F5BAD /* Table-ViewModel */,
 			);
@@ -630,6 +650,7 @@
 				D30E37E01AA7AA55009F5BAD /* PersonTableViewModel.swift in Sources */,
 				D3834B081AA6A533004EB0A1 /* ParticipationAnimator.swift in Sources */,
 				D386EB561ABA46DB00C9CB1A /* SquareButton.swift in Sources */,
+				D32BB8C61ADEFC5F004D1C71 /* TableWithViewModelG.swift in Sources */,
 				D331B5CA1AA9094B009CDE98 /* PostTableViewModel.swift in Sources */,
 				D30E37DA1AA79576009F5BAD /* TableWithViewModel.swift in Sources */,
 				D341CAFE1AAF5F540016157E /* ScrollByPhantomController.swift in Sources */,
@@ -648,6 +669,7 @@
 				D3834B061AA646C2004EB0A1 /* ScreenImageGenerators.swift in Sources */,
 				D3E581A91AAA31B300D5A933 /* FBKVOController.m in Sources */,
 				D39A2BAA1AB88CE4008930B5 /* TableAnimatingStrategy.swift in Sources */,
+				D32BB8CE1AE03FC5004D1C71 /* CellRegistrationConfiguration.swift in Sources */,
 				D341CB021AB08B340016157E /* TableViewWithModelAdditions.swift in Sources */,
 				D34477D91AA53981005BC0A3 /* AppController.swift in Sources */,
 				D386EB5C1ABA4B0400C9CB1A /* CircleButton.swift in Sources */,
@@ -670,6 +692,8 @@
 				D39A2BB31AB8CF9B008930B5 /* TriangleLayer.swift in Sources */,
 				D32D5D961AA58B7E00AC8B97 /* TablesIntroController.swift in Sources */,
 				D30E37E81AA7B3DC009F5BAD /* TablesIntroNavStrategy.swift in Sources */,
+				D32BB8D21AE1900C004D1C71 /* PostsTableViewModelWoven.swift in Sources */,
+				D32BB8D01AE15A8A004D1C71 /* AppNetPostRequestsManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

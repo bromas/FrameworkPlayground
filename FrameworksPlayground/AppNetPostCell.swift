@@ -15,6 +15,8 @@ class AppNetPostCell: UITableViewCell {
   @IBOutlet var userNameLabel: UILabel!
   @IBOutlet var postLabel: UILabel!
   
+  var imageFilter: (String) -> Bool = { identifier in return true }
+  
   var container: UIView!
   
   required init(coder aDecoder: NSCoder) {
@@ -58,16 +60,22 @@ class AppNetPostCell: UITableViewCell {
     
   }
   
-  func updateAvatarIcon(image: UIImage) -> Void {
-    UIView.animateWithDuration(0.1, animations: { () -> Void in
-      self.avatarView.alpha = 0.0
-      return
-    }) { (completed) -> Void in
-      self.avatarView?.image = image
-      UIView.animateWithDuration(0.1, animations: { () -> Void in
-        self.avatarView.alpha = 1.0
+  func updateAvatarIcon(image: UIImage?) -> Void {
+    self.avatarView?.image = image
+  }
+  
+  func updateAvatarIconWithCheck(image: UIImage?, filterIdentifier: String) -> Void {
+    if imageFilter(filterIdentifier) {
+      UIView.animateWithDuration(0.2, animations: { () -> Void in
+        self.avatarView.alpha = 0.0
         return
-      })
+        }) { (completed) -> Void in
+          self.avatarView?.image = image
+          UIView.animateWithDuration(0.1, animations: { () -> Void in
+            self.avatarView.alpha = 1.0
+            return
+          })
+      }
     }
   }
 }

@@ -46,7 +46,7 @@ class PersonTableViewModel: TableViewModel {
     return "personCellIdentifier"
   }
   
-  func configureCell(cell: UITableViewCell, forIndexPath: Int) {
+  func configureCell(cell: UITableViewCell, identifier: String, forIndexPath: Int) {
     let personCell = cell as! PersonCell
     personCell.firstName.text = collection[forIndexPath].firstName
     personCell.lastName.text = collection[forIndexPath].lastName

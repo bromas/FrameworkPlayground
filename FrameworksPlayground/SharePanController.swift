@@ -35,7 +35,7 @@ class SharePanController : ViewController, PanSharingDelegate {
     }
     
     let childController = TableViewWithModelAdditions()
-    childController.configure(viewModel: PostTableViewModel())
+    childController.configure(viewModel: PostTableViewModel<AppNetPost>())
     childController.configureWithPanSharingDelegate(self)
     Architect.embed(childController, withParent: self, inView: self.view) { [unowned self] controller in
       self.embedTopConstraint = NSLayoutConstraint(item: childController.view, attribute: .Top, relatedBy: .Equal, toItem: self.topLayoutGuide, attribute: .Bottom, multiplier: 1.0, constant: self.lowPosition)

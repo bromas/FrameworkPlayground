@@ -13,9 +13,8 @@ protocol TableViewModel {
   
   func estimatedRowHeight() -> CGFloat
   func numberOfItems() -> Int
-  func registerTableViewCell(table: UITableView) -> String
-  
+    
   func refreshData(completion: () -> Void) -> Void
-  func configureCell(cell: UITableViewCell, forIndexPath: Int)
+  func configureCell(cell: UITableViewCell, identifier: String, forIndexPath: Int)
   
 }

@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class TableViewWithModelAdditions: TableViewWithModel, TransitionParticipant {
+class TableViewWithModelAdditions: TableViewWithModelG, TransitionParticipant {
   
   var phantomController: PhantomScrollController?
   var controllerSharingPanWith: PanSharingDelegate?
