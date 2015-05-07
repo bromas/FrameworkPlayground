@@ -58,7 +58,7 @@ class OpenAndThroughAnimator : ParticipationAnimator {
     fromV = fromView
     
     toView?.preppedForAutoLayout(inView: container)
-    Constrain.inset(toView!, with: [.Top: 0, .Right: 0, .Bottom: 0, .Left: 0])
+    inset(toView!, with: [.Top: 0, .Right: 0, .Bottom: 0, .Left: 0])
     container.sendSubviewToBack(toView!)
     container.layoutIfNeeded()
     
@@ -124,14 +124,14 @@ class OpenAndThroughAnimator : ParticipationAnimator {
     var firstSplit = Architect.imageView(inView: container) { (imageView) in
       imageView.image = images.left
       imageView.backgroundColor = UIColor.greenColor()
-      Constrain.inset(imageView, with: [.Left: 0, .Top: 0, .Bottom: 0])
-      Constrain.size(imageView, with: [.Width: Float(container.bounds.width/2)])
+      inset(imageView, with: [.Left: 0, .Top: 0, .Bottom: 0])
+      size(imageView, with: [.Width: container.bounds.width/2])
     }
     var secondSplit = Architect.imageView(inView: container) { (imageView) in
       imageView.image = images.right
       imageView.backgroundColor = UIColor.greenColor()
-      Constrain.inset(imageView, with: [.Right: 0, .Top: 0, .Bottom: 0])
-      Constrain.size(imageView, with: [.Width: Float(container.bounds.width/2)])
+      inset(imageView, with: [.Right: 0, .Top: 0, .Bottom: 0])
+      size(imageView, with: [.Width: container.bounds.width/2])
     }
     container.layoutIfNeeded()
     let firstSplitFromTransform = CGAffineTransformIdentity
@@ -151,14 +151,14 @@ class OpenAndThroughAnimator : ParticipationAnimator {
     var firstSplit = Architect.imageView(inView: container) { (imageView) in
       imageView.image = images.top
       imageView.backgroundColor = UIColor.greenColor()
-      Constrain.inset(imageView, with: [.Left: 0, .Top: 0, .Right: 0])
-      Constrain.size(imageView, with: [.Height: Float(container.bounds.height/2)])
+      inset(imageView, with: [.Left: 0, .Top: 0, .Right: 0])
+      size(imageView, with: [.Height: container.bounds.height/2])
     }
     var secondSplit = Architect.imageView(inView: container) { (imageView) in
       imageView.image = images.bottom
       imageView.backgroundColor = UIColor.greenColor()
-      Constrain.inset(imageView, with: [.Left: 0, .Bottom: 0, .Right: 0])
-      Constrain.size(imageView, with: [.Height: Float(container.bounds.height/2)])
+      inset(imageView, with: [.Left: 0, .Bottom: 0, .Right: 0])
+      size(imageView, with: [.Height: container.bounds.height/2])
     }
     container.layoutIfNeeded()
     let firstSplitFromTransform = CGAffineTransformIdentity
@@ -212,14 +212,14 @@ class OpenAndThroughAnimator : ParticipationAnimator {
     var firstSplit = Architect.imageView(inView: container) { (imageView) in
       imageView.image = images.top
       imageView.backgroundColor = UIColor.greenColor()
-      Constrain.inset(imageView, with: [.Left: 0, .Top: 0, .Right: 0])
-      Constrain.size(imageView, with: [.Height: Float(container.bounds.height/2)])
+      inset(imageView, with: [.Left: 0, .Top: 0, .Right: 0])
+      size(imageView, with: [.Height: container.bounds.height/2])
     }
     var secondSplit = Architect.imageView(inView: container) { (imageView) in
       imageView.image = images.bottom
       imageView.backgroundColor = UIColor.greenColor()
-      Constrain.inset(imageView, with: [.Right: 0, .Bottom: 0, .Left: 0])
-      Constrain.size(imageView, with: [.Height: Float(container.bounds.height/2)])
+      inset(imageView, with: [.Right: 0, .Bottom: 0, .Left: 0])
+      size(imageView, with: [.Height: container.bounds.height/2])
     }
     container.layoutIfNeeded()
     let firstSplitFromTransform = CGAffineTransformMakeTranslation(0, -container.bounds.height/2)
@@ -239,14 +239,14 @@ class OpenAndThroughAnimator : ParticipationAnimator {
     var firstSplit = Architect.imageView(inView: container) { (imageView) in
       imageView.image = images.left
       imageView.backgroundColor = UIColor.greenColor()
-      Constrain.inset(imageView, with: [.Left: 0, .Top: 0, .Bottom: 0])
-      Constrain.size(imageView, with: [.Width: Float(container.bounds.width/2)])
+      inset(imageView, with: [.Left: 0, .Top: 0, .Bottom: 0])
+      size(imageView, with: [.Width: container.bounds.width/2])
     }
     var secondSplit = Architect.imageView(inView: container) { (imageView) in
       imageView.image = images.right
       imageView.backgroundColor = UIColor.greenColor()
-      Constrain.inset(imageView, with: [.Right: 0, .Top: 0, .Bottom: 0])
-      Constrain.size(imageView, with: [.Width: Float(container.bounds.width/2)])
+      inset(imageView, with: [.Right: 0, .Top: 0, .Bottom: 0])
+      size(imageView, with: [.Width: container.bounds.width/2])
     }
     container.layoutIfNeeded()
     let firstSplitFromTransform = CGAffineTransformMakeTranslation(-container.bounds.width/2, 0)

@@ -11,7 +11,7 @@
 import Foundation
 import UIKit
 import Architect
-import ApplicationViewController
+import ActivityViewController
 
 class PhantomScrollController : ViewController, UIScrollViewDelegate {
   
@@ -67,7 +67,7 @@ class PhantomScrollController : ViewController, UIScrollViewDelegate {
     let childController = ScrollByPhantomController()
     childController.configureWithPhantomScrollController(self)
     Architect.embed(childController, withParent: self, inView: self.containerView) { controller in
-      Constrain.inset(controller.view, with: [.Top: 0, .Right: 0, .Bottom: 0, .Left: 0])
+      inset(controller.view, with: [.Top: 0, .Right: 0, .Bottom: 0, .Left: 0])
       return
     }
     self.scroll = childController.scroll
@@ -76,10 +76,10 @@ class PhantomScrollController : ViewController, UIScrollViewDelegate {
   
   func setActiveChildControllerTwo() {
     let childController = TableViewWithModelAdditions()
-    childController.configure(viewModel: PersonTableViewModel())
+    AppNetConfigurationManager.sharedInstance.configureSimpleSelectTable(childController)
     childController.configureWithPhantomScrollController(self)
     Architect.embed(childController, withParent: self, inView: self.containerView) { controller in
-      Constrain.inset(controller.view, with: [.Top: 0, .Right: 0, .Bottom: 0, .Left: 0])
+      inset(controller.view, with: [.Top: 0, .Right: 0, .Bottom: 0, .Left: 0])
       return
     }
     self.scroll = childController.table
@@ -89,7 +89,7 @@ class PhantomScrollController : ViewController, UIScrollViewDelegate {
   func buildView() {
     
     self.containerView = Architect.view(inView: self.view) { [unowned self] view in
-      Constrain.inset(view, with: [.Right:0, .Left: 0])
+      inset(view, with: [.Right:0, .Left: 0])
       return
     }
     self.embedTopConstraint = NSLayoutConstraint(item: self.containerView, attribute: .Top, relatedBy: .Equal, toItem: self.topLayoutGuide, attribute: .Bottom, multiplier: 1.0, constant: 400.0)
@@ -97,12 +97,12 @@ class PhantomScrollController : ViewController, UIScrollViewDelegate {
     
     Architect.view(inView: self.view) { [unowned self] in
       $0.backgroundColor = UIColor.blackColor()
-      Constrain.inset($0, with: [.Left: 0, .Right: 0])
-      Constrain.pin(bottom: $0, toTop: self.containerView, withMagnitude: 0.0)
+      inset($0, with: [.Left: 0, .Right: 0])
+      pin(bottom: $0, toTop: self.containerView, magnitude: 0.0)
       Constrain.size($0, with: [.Height: 44])
       Architect.button(type: UIButtonType.InfoDark, inView: $0) {
         $0.titleLabel?.text = "Hello"
-        Constrain.center($0, with: [.X:-100, .Y:0])
+        align(center: $0, with: [.X:-100, .Y:0])
         $0.addTarget(self, action: "", forControlEvents: UIControlEvents.TouchUpInside)
         return
       }
@@ -110,7 +110,7 @@ class PhantomScrollController : ViewController, UIScrollViewDelegate {
     
     scroll = Architect.custom(UIScrollView(), inView: self.view) {
       $0.delegate = self
-      Constrain.inset($0, with: [.Right: 0, .Bottom: 0, .Left: 0])
+      inset($0, with: [.Right: 0, .Bottom: 0, .Left: 0])
       $0.contentSize = CGSizeMake(self.view.bounds.width, 2000)
     }
     self.view.addConstraint(NSLayoutConstraint(item: scroll, attribute: .Top, relatedBy: .Equal, toItem: self.topLayoutGuide, attribute: .Bottom, multiplier: 1.0, constant: 0.0))

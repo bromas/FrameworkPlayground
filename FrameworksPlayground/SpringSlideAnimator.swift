@@ -39,7 +39,7 @@ class SpringSlideAnimator : ParticipationAnimator {
     let container = transitionContext.containerView()
     
     toView?.preppedForAutoLayout(inView: container)
-    Constrain.inset(toView!, with: [.Top: 0, .Right: 0, .Bottom: 0, .Left: 0])
+    inset(toView!, with: [.Top: 0, .Right: 0, .Bottom: 0, .Left: 0])
     container.layoutIfNeeded()
     
     var toStartTransform: CGAffineTransform
@@ -70,6 +70,10 @@ class SpringSlideAnimator : ParticipationAnimator {
   }
   
   override func performInternalCompletion(transitionContext: UIViewControllerContextTransitioning) {
+    let fromView = transitionContext.viewForKey(UITransitionContextFromViewKey)
+    let toView = transitionContext.viewForKey(UITransitionContextToViewKey)
+    toView?.transform = CGAffineTransformIdentity
+    fromView!.transform = CGAffineTransformIdentity
     transitionContext.completeTransition(!transitionContext.transitionWasCancelled())
   }
   

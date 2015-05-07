@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import ApplicationViewController
+import ActivityViewController
 import StrategicControllers
 
 class IntroController: ViewController {

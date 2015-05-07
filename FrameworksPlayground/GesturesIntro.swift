@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-import ApplicationViewController
+import ActivityViewController
 
 class GesturesIntro : ViewController {
   

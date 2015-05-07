@@ -22,7 +22,7 @@ class ShapeButton: UIControl {
     super.init(coder: aDecoder)
     self.backgroundColor = UIColor.clearColor()
     self.actionLabel = Architect.label(inView: self) {
-      Constrain.center($0, with: [.X:0, .Y:20])
+      align(center: $0, with: [.X:0, .Y:20])
       $0.font = UIFont.systemFontOfSize(10)
       $0.text = "ShapeButton"
     }

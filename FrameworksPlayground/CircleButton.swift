@@ -25,10 +25,10 @@ class CircleButton: UIControl {
   required init(coder aDecoder: NSCoder) {
     super.init(coder: aDecoder)
     self.backgroundColor = UIColor.clearColor()
-    self.actionLabel = Architect.label(inView: self) {
-      Constrain.center($0, with: [.X:0, .Y:20])
-      $0.font = UIFont.systemFontOfSize(10)
-      $0.text = "ShapeButton"
+    self.actionLabel = Architect.label(inView: self) { label in
+      align(center: label, with: [BlueprintCoordinate.X: 0, BlueprintCoordinate.Y: 0])
+      label.font = UIFont.systemFontOfSize(10)
+      label.text = "ShapeButton"
     }
   }
   

@@ -40,7 +40,7 @@ class TableViewWithModel : StrategicController, UITableViewDataSource, UITableVi
     if let foundTable = table {
     } else {
       self.table = Architect.custom(UITableView(), inView: self.view) {
-        Constrain.inset($0, with: [.Top: 0, .Right: 0, .Bottom: 0, .Left: 0])
+        inset($0, with: [.Top: 0, .Right: 0, .Bottom: 0, .Left: 0])
         return
       }
       self.table.delegate = self
@@ -51,7 +51,7 @@ class TableViewWithModel : StrategicController, UITableViewDataSource, UITableVi
     self.table.allowsSelection = true
     self.table.tableFooterView = UIView(frame: CGRectMake(0, 0, 0, 1))
     self.activityIndicator = Architect.custom(UIActivityIndicatorView(activityIndicatorStyle: .Gray), inView: self.view) {
-      Constrain.center($0, with: [.X: 0, .Y: -100])
+      align(center: $0, with: [.X: 0, .Y: -100])
       $0.hidesWhenStopped = true
       $0.startAnimating()
     }

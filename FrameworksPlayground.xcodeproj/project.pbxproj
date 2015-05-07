@@ -37,8 +37,6 @@
 		D34477AE1AA51E0E005BC0A3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D34477AD1AA51E0E005BC0A3 /* Images.xcassets */; };
 		D34477B11AA51E0E005BC0A3 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D34477AF1AA51E0E005BC0A3 /* LaunchScreen.xib */; };
 		D34477BD1AA51E0E005BC0A3 /* FrameworksPlaygroundTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34477BC1AA51E0E005BC0A3 /* FrameworksPlaygroundTests.swift */; };
-		D34477D11AA520EE005BC0A3 /* ApplicationViewController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D34477CB1AA52058005BC0A3 /* ApplicationViewController.framework */; };
-		D34477D21AA520EE005BC0A3 /* ApplicationViewController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D34477CB1AA52058005BC0A3 /* ApplicationViewController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D34477D31AA520EE005BC0A3 /* Architect.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D34477CC1AA52058005BC0A3 /* Architect.framework */; };
 		D34477D41AA520EE005BC0A3 /* Architect.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D34477CC1AA52058005BC0A3 /* Architect.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D34477D51AA520EE005BC0A3 /* StrategicControllers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D34477CD1AA52058005BC0A3 /* StrategicControllers.framework */; };
@@ -46,6 +44,7 @@
 		D34477D91AA53981005BC0A3 /* AppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34477D81AA53981005BC0A3 /* AppController.swift */; };
 		D34477DC1AA53C42005BC0A3 /* SpringSlideAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34477DB1AA53C42005BC0A3 /* SpringSlideAnimator.swift */; };
 		D34A08D41AA8A673003688C4 /* AppNetPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34A08D31AA8A673003688C4 /* AppNetPost.swift */; };
+		D381413E1AF90DED00022F35 /* AppNetConfigurationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D381413D1AF90DED00022F35 /* AppNetConfigurationManager.swift */; };
 		D3834B041AA63BBB004EB0A1 /* LayerAnimations.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3834B031AA63BBB004EB0A1 /* LayerAnimations.swift */; };
 		D3834B061AA646C2004EB0A1 /* ScreenImageGenerators.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3834B051AA646C2004EB0A1 /* ScreenImageGenerators.swift */; };
 		D3834B081AA6A533004EB0A1 /* ParticipationAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3834B071AA6A533004EB0A1 /* ParticipationAnimator.swift */; };
@@ -71,6 +70,8 @@
 		D3E581A41AA9836C00D5A933 /* DynamicBinding.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E581A31AA9836C00D5A933 /* DynamicBinding.swift */; };
 		D3E581A91AAA31B300D5A933 /* FBKVOController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E581A81AAA31B300D5A933 /* FBKVOController.m */; };
 		D3E581AD1AAA32C200D5A933 /* ScrollGrowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E581AC1AAA32C200D5A933 /* ScrollGrowController.swift */; };
+		D3EC8AA81AFC86D8006E6F71 /* ActivityViewController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3EC8AA61AFC86CF006E6F71 /* ActivityViewController.framework */; };
+		D3EC8AA91AFC86D8006E6F71 /* ActivityViewController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D3EC8AA61AFC86CF006E6F71 /* ActivityViewController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D3F8ADDF1AA8086700C99923 /* Runes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3F8ADDC1AA8084800C99923 /* Runes.framework */; };
 		D3F8ADE01AA8086700C99923 /* Runes.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D3F8ADDC1AA8084800C99923 /* Runes.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D3F8ADE11AA8086E00C99923 /* Argo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3F8ADDB1AA8084800C99923 /* Argo.framework */; };
@@ -100,12 +101,12 @@
 			dstSubfolderSpec = 10;
 			files = (
 				D39A2BAE1AB8BC74008930B5 /* BCCoalescing.framework in Embed Frameworks */,
+				D3EC8AA91AFC86D8006E6F71 /* ActivityViewController.framework in Embed Frameworks */,
 				D3F8ADE01AA8086700C99923 /* Runes.framework in Embed Frameworks */,
 				D3F8ADE61AA8114000C99923 /* Alamofire.framework in Embed Frameworks */,
 				D34477D41AA520EE005BC0A3 /* Architect.framework in Embed Frameworks */,
 				D3F8ADE21AA8086E00C99923 /* Argo.framework in Embed Frameworks */,
 				D34477D61AA520EE005BC0A3 /* StrategicControllers.framework in Embed Frameworks */,
-				D34477D21AA520EE005BC0A3 /* ApplicationViewController.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -147,12 +148,12 @@
 		D34477B61AA51E0E005BC0A3 /* FrameworksPlaygroundTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FrameworksPlaygroundTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D34477BB1AA51E0E005BC0A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D34477BC1AA51E0E005BC0A3 /* FrameworksPlaygroundTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameworksPlaygroundTests.swift; sourceTree = "<group>"; };
-		D34477CB1AA52058005BC0A3 /* ApplicationViewController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationViewController.framework; path = Carthage/Build/iOS/ApplicationViewController.framework; sourceTree = SOURCE_ROOT; };
 		D34477CC1AA52058005BC0A3 /* Architect.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Architect.framework; path = Carthage/Build/iOS/Architect.framework; sourceTree = SOURCE_ROOT; };
 		D34477CD1AA52058005BC0A3 /* StrategicControllers.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StrategicControllers.framework; path = Carthage/Build/iOS/StrategicControllers.framework; sourceTree = SOURCE_ROOT; };
 		D34477D81AA53981005BC0A3 /* AppController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppController.swift; sourceTree = "<group>"; };
 		D34477DB1AA53C42005BC0A3 /* SpringSlideAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpringSlideAnimator.swift; sourceTree = "<group>"; };
 		D34A08D31AA8A673003688C4 /* AppNetPost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppNetPost.swift; sourceTree = "<group>"; };
+		D381413D1AF90DED00022F35 /* AppNetConfigurationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppNetConfigurationManager.swift; sourceTree = "<group>"; };
 		D3834B031AA63BBB004EB0A1 /* LayerAnimations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayerAnimations.swift; sourceTree = "<group>"; };
 		D3834B051AA646C2004EB0A1 /* ScreenImageGenerators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreenImageGenerators.swift; sourceTree = "<group>"; };
 		D3834B071AA6A533004EB0A1 /* ParticipationAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParticipationAnimator.swift; sourceTree = "<group>"; };
@@ -179,6 +180,7 @@
 		D3E581A71AAA31B300D5A933 /* FBKVOController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBKVOController.h; sourceTree = "<group>"; };
 		D3E581A81AAA31B300D5A933 /* FBKVOController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBKVOController.m; sourceTree = "<group>"; };
 		D3E581AC1AAA32C200D5A933 /* ScrollGrowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollGrowController.swift; sourceTree = "<group>"; };
+		D3EC8AA61AFC86CF006E6F71 /* ActivityViewController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ActivityViewController.framework; path = Carthage/Build/iOS/ActivityViewController.framework; sourceTree = SOURCE_ROOT; };
 		D3F8ADDB1AA8084800C99923 /* Argo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Argo.framework; path = Carthage/Build/iOS/Argo.framework; sourceTree = SOURCE_ROOT; };
 		D3F8ADDC1AA8084800C99923 /* Runes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Runes.framework; path = Carthage/Build/iOS/Runes.framework; sourceTree = SOURCE_ROOT; };
 		D3F8ADE31AA8113700C99923 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = SOURCE_ROOT; };
@@ -193,12 +195,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				D39A2BAD1AB8BC74008930B5 /* BCCoalescing.framework in Frameworks */,
+				D3EC8AA81AFC86D8006E6F71 /* ActivityViewController.framework in Frameworks */,
 				D3F8ADDF1AA8086700C99923 /* Runes.framework in Frameworks */,
 				D3F8ADE51AA8114000C99923 /* Alamofire.framework in Frameworks */,
 				D34477D31AA520EE005BC0A3 /* Architect.framework in Frameworks */,
 				D3F8ADE11AA8086E00C99923 /* Argo.framework in Frameworks */,
 				D34477D51AA520EE005BC0A3 /* StrategicControllers.framework in Frameworks */,
-				D34477D11AA520EE005BC0A3 /* ApplicationViewController.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -246,6 +248,7 @@
 		D30E37E91AA7B4B3009F5BAD /* Activities */ = {
 			isa = PBXGroup;
 			children = (
+				D381413D1AF90DED00022F35 /* AppNetConfigurationManager.swift */,
 				D34A08D11AA89F58003688C4 /* Intro */,
 				D30E37E61AA7B3BE009F5BAD /* Tables */,
 				D3E5819D1AA97A1200D5A933 /* Dynamics */,
@@ -418,11 +421,11 @@
 		D34477CA1AA52044005BC0A3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D3EC8AA61AFC86CF006E6F71 /* ActivityViewController.framework */,
 				D39A2BAB1AB8BC5F008930B5 /* BCCoalescing.framework */,
 				D3F8ADE31AA8113700C99923 /* Alamofire.framework */,
 				D3F8ADDB1AA8084800C99923 /* Argo.framework */,
 				D3F8ADDC1AA8084800C99923 /* Runes.framework */,
-				D34477CB1AA52058005BC0A3 /* ApplicationViewController.framework */,
 				D34477CC1AA52058005BC0A3 /* Architect.framework */,
 				D34477CD1AA52058005BC0A3 /* StrategicControllers.framework */,
 			);
@@ -665,6 +668,7 @@
 				D3E581A41AA9836C00D5A933 /* DynamicBinding.swift in Sources */,
 				D34A08D41AA8A673003688C4 /* AppNetPost.swift in Sources */,
 				D3FD4AB91AAE59F800C26C64 /* TabBarControllerTransitionParticipatior.swift in Sources */,
+				D381413E1AF90DED00022F35 /* AppNetConfigurationManager.swift in Sources */,
 				D30E37EB1AA7B853009F5BAD /* TabelWithVMTablesStrategy.swift in Sources */,
 				D3834B061AA646C2004EB0A1 /* ScreenImageGenerators.swift in Sources */,
 				D3E581A91AAA31B300D5A933 /* FBKVOController.m in Sources */,

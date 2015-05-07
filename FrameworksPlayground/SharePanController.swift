@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 import Architect
-import ApplicationViewController
+import ActivityViewController
 
 protocol PanSharingDelegate {
   func handleScrollViewDidScroll(scrollView: UIScrollView) -> Bool
@@ -17,10 +17,14 @@ protocol PanSharingDelegate {
 
 class SharePanController : ViewController, PanSharingDelegate {
   
+  @IBOutlet var swapButton: UIButton!
+  var activities: ActivityViewController!
+  var activeActivity: String = "posts"
+  
   let lowPosition: CGFloat = 320.0
   let highPosition: CGFloat = 44.0
   
-  var embedTopConstraint: NSLayoutConstraint?
+  var embedTopPin: NSLayoutConstraint?
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -29,35 +33,84 @@ class SharePanController : ViewController, PanSharingDelegate {
     self.view.backgroundColor = UIColor.orangeColor()
     
     let guide = Architect.view(inView: self.view) {
-      Constrain.inset($0, with: [.Right: 0, .Bottom: 0, .Left: 0])
-      self.view.addConstraint(NSLayoutConstraint(item: $0, attribute: .Top, relatedBy: .Equal, toItem: self.topLayoutGuide, attribute: .Bottom, multiplier: 1.0, constant: 0.0))
+      inset($0, with: [.Right: 0, .Bottom: 0, .Left: 0])
+      pin($0, edge: .Top, toGuide: self.topLayoutGuide, inController: self, constant: self.highPosition)
       $0.backgroundColor = UIColor.clearColor()
     }
     
-    let childController = TableViewWithModelAdditions()
-    childController.configure(viewModel: PostTableViewModel<AppNetPost>())
-    childController.configureWithPanSharingDelegate(self)
-    Architect.embed(childController, withParent: self, inView: self.view) { [unowned self] controller in
-      self.embedTopConstraint = NSLayoutConstraint(item: childController.view, attribute: .Top, relatedBy: .Equal, toItem: self.topLayoutGuide, attribute: .Bottom, multiplier: 1.0, constant: self.lowPosition)
-      self.view.addConstraint(self.embedTopConstraint!)
-      Constrain.inset(controller.view, with: [.Right:0, .Left: 0])
-      self.view.addConstraint(NSLayoutConstraint(item: controller.view, attribute: .Height, relatedBy: .Equal, toItem: guide, attribute: .Height, multiplier: 1.0, constant: -44.0))
+    activities = ActivityViewController()
+    self.configureEmbeddedActivities(activities)
+    let embed = Architect.embed(activities, withParent: self, inView: self.view) {
+      self.embedTopPin = pin($0.view, edge: .Top, toGuide: self.topLayoutGuide, inController: self, constant: self.lowPosition)
+      inset($0.view, with: [.Right:0, .Left: 0])
+      equate($0.view, to: guide, with: [.Height: 0])
+    }
+    
+    self.swapButton = Architect.button(type: UIButtonType.System, inView: self.view) {
+      align(center: $0, with: [.X: 0])
+      pin(bottom: $0, toTop: embed.view, magnitude: -8.0)
+      $0.addTarget(self, action: "swapController", forControlEvents: UIControlEvents.TouchUpInside)
+      $0.setTitle("Swap", forState: UIControlState.Normal)
+    }
+  }
+  
+  func swapController() {
+//    I'm flushing the inactive identifiers until I figure out the proper way to handle the scrolling delegate - this isn't the intended final behavior
+    self.swapButton.enabled = false
+    switch activeActivity {
+    case "posts":
+      var operation = ActivityOperation(identifier: "scroll", animator: SpringSlideAnimator(direction: .Right))
+      operation.completionBlock = { [unowned self] in
+        self.swapButton.enabled = true
+        self.activities.flushInactiveActivitiesForIdentifier("posts")
+        return
+      }
+      activities.performActivityOperation(operation)
+      activeActivity = "scroll"
+    default:
+      var operation = ActivityOperation(identifier: "posts", animator: SpringSlideAnimator(direction: .Left))
+      operation.completionBlock = { [unowned self] in
+        self.swapButton.enabled = true
+        self.activities.flushInactiveActivitiesForIdentifier("scroll")
+        return
+      }
+      activities.performActivityOperation(operation)
+      activeActivity = "posts"
     }
   }
 
+  func configureEmbeddedActivities(activities: ActivityViewController) {
+    
+    activities.registerGenerator("posts") { [unowned self] () -> UIViewController in
+      let childController = TableViewWithModelAdditions()
+      AppNetConfigurationManager.sharedInstance.configureSimpleSelectTable(childController)
+      childController.configureWithPanSharingDelegate(self)
+      return childController
+    }
+    
+    activities.registerGenerator("scroll") { [unowned self] () -> UIViewController in
+      let childController = TableViewWithModelAdditions()
+      AppNetConfigurationManager.sharedInstance.configureSimpleSelectTable(childController)
+      childController.configureWithPanSharingDelegate(self)
+      return childController
+    }
+    
+    activities.initialActivityIdentifier = "posts"
+  }
+  
   
   func handleScrollViewDidScroll(scrollView: UIScrollView) -> Bool {
     if scrollView.contentOffset.y == 0 {
       scrollView.showsVerticalScrollIndicator = false
       return true
     } else if scrollView.contentOffset.y > 0 {
-      if self.embedTopConstraint!.constant > highPosition {
+      if self.embedTopPin!.constant > highPosition {
         // Adjust
         let adjustAmount = 1.4  * scrollView.contentOffset.y
-        self.embedTopConstraint!.constant -= adjustAmount
+        self.embedTopPin!.constant -= adjustAmount
         scrollView.contentOffset = CGPointZero
         // Limit
-        if self.embedTopConstraint!.constant < highPosition { self.embedTopConstraint!.constant = highPosition }
+        if self.embedTopPin!.constant < highPosition { self.embedTopPin!.constant = highPosition }
         // We moved - You don't move
         return false
       } else {
@@ -65,12 +118,12 @@ class SharePanController : ViewController, PanSharingDelegate {
         return true
       }
     } else {
-      if self.embedTopConstraint!.constant < lowPosition {
+      if self.embedTopPin!.constant < lowPosition {
         // Adjust
         let adjustAmount = 0.4 * scrollView.contentOffset.y
-        self.embedTopConstraint!.constant -= adjustAmount
+        self.embedTopPin!.constant -= adjustAmount
         // Limit
-        if self.embedTopConstraint!.constant > lowPosition { self.embedTopConstraint!.constant = lowPosition }
+        if self.embedTopPin!.constant > lowPosition { self.embedTopPin!.constant = lowPosition }
         // We moved - You don't move
         return false
       } else {

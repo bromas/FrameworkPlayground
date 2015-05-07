@@ -11,6 +11,7 @@ import UIKit
 import Runes
 import Argo
 import Alamofire
+import BCCoalescing
 
 enum ProvidedImage {
   case found(UIImage)
@@ -23,6 +24,7 @@ class AppNetPostRequestsManager {
   var userIDIconMap: [String: UIImage] = [:]
   
   init () {
+    coalesce.shouldPerformCallbacksOnMainThread = true
     coalesce.resultsInterpolator = { data in
       let target = data as! NSData
       return UIImage(data: target)
@@ -44,22 +46,20 @@ class AppNetPostRequestsManager {
     return ProvidedImage.mocked(.None)
   }
   
-  func downloadImageForUser(forUser: AppNetUser, completion: (UIImage?) -> Void) -> Void {
+  func downloadImageForUser(forUser: AppNetUser, completion: (UIImage?) -> Void) -> BCRegistrationToken {
     
-    let globalConcurrentQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
-    dispatch_async(globalConcurrentQueue) { [unowned self] in
-      self.coalesce.addCallbacksWithProgress({ (percent) -> Void in return }, andCompletion: { (data, response, error) -> Void in
-        dispatch_async(dispatch_get_main_queue()) {
-          self.userIDIconMap[forUser.userID] = data as? UIImage
-          completion(self.userIDIconMap[forUser.userID])
+    let token = self.coalesce.addCallbackWithProgress({ (percent) -> Void in
+      
+      }, andCompletion: { (data, response, error) -> Void in
+        self.userIDIconMap[forUser.userID] = data as? UIImage
+        completion(self.userIDIconMap[forUser.userID])
+      }, forIdentifier: forUser.userID) { () -> Void in
+        Alamofire.request(.GET, forUser.avatarUrl).response { (_, _, data, error) -> Void in
+          self.coalesce.identifier(forUser.userID, completedWithData: data as! NSData, andError: error)
         }
-        }, forIdentifier: forUser.userID) { () -> Void in
-          Alamofire.request(.GET, forUser.avatarUrl).response { (_, _, data, error) -> Void in
-            self.coalesce.identifier(forUser.userID, completedWithData: data as! NSData, andError: error)
-          }
-          return
-      }
     }
+    
+    return token
     
   }
 }

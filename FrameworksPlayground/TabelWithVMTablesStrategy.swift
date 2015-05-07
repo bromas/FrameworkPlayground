@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 import StrategicControllers
-import ApplicationViewController
+import ActivityViewController
 
 typealias TableWithVMTablesStrategy = tableWithVMTablesStrategy<Int>
 class tableWithVMTablesStrategy<Int> : ControllerStrategy<TableViewWithModelAdditions> {

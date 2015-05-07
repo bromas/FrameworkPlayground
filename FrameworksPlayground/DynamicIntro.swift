@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-import ApplicationViewController
+import ActivityViewController
 import Architect
 
 class DynamicIntro : ViewController {
@@ -33,7 +33,7 @@ class DynamicIntro : ViewController {
     
     self.view.backgroundColor = UIColor.blackColor()
     self.dynamicsView = Architect.view(inView: self.view) { (view) in
-      Constrain.inset(view, with: [.Top: 120, .Right: 20, .Bottom: 20, .Left: 20])
+      inset(view, with: [.Top: 120, .Right: 20, .Bottom: 20, .Left: 20])
       return
     }
     

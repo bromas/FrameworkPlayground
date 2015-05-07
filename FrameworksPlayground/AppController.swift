@@ -7,9 +7,10 @@
 //
 
 import Foundation
-import ApplicationViewController
+import UIKit
+import ActivityViewController
 
-class AppController: ApplicationViewController {
+class AppController: ActivityViewController {
   
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     

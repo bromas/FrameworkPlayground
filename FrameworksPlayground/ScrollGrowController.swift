@@ -17,7 +17,7 @@ class ScrollGrowController: ViewController {
   
   weak var weakSelf : ScrollGrowController?
   
-  let minimumImageHeight :Float = 200
+  let minimumImageHeight :CGFloat = 200
   @IBOutlet weak var imageHeight: NSLayoutConstraint!
   @IBOutlet weak var imageOffset: NSLayoutConstraint!
   
@@ -33,7 +33,7 @@ class ScrollGrowController: ViewController {
   // This should just be done by scrollViewDidScroll yea?
   func scrollChange(change: NSDictionary) {
     if let point : NSValue = change["new"] as? NSValue {
-      let offset = self.minimumImageHeight - Float(point.CGPointValue().y)
+      let offset = self.minimumImageHeight - point.CGPointValue().y
       if (offset > self.minimumImageHeight) {
         self.imageHeight.constant = CGFloat(offset)
         self.imageOffset.constant = 0.0
@@ -51,8 +51,8 @@ class ScrollGrowController: ViewController {
       $0.backgroundColor = UIColor.greenColor()
       self.imageOffset = NSLayoutConstraint(item: $0, attribute: .Top, relatedBy: .Equal, toItem: self.topLayoutGuide, attribute: .Bottom, multiplier: 1.0, constant: 0.0)
       self.view.addConstraint(self.imageOffset)
-      Constrain.center($0, with: [.X: 0])
-      self.imageHeight =  Constrain.size($0, with: [.Height: self.minimumImageHeight])[0]
+      align(center: $0, with: [.X: 0])
+      self.imageHeight =  size($0, with: [.Height: self.minimumImageHeight])[.Height]!
       $0.addConstraint(NSLayoutConstraint(item: $0, attribute: .Width, relatedBy: .Equal, toItem: $0, attribute: .Height, multiplier: 1.0, constant: 0.0))
     }
     
@@ -60,18 +60,18 @@ class ScrollGrowController: ViewController {
     let view = Architect.custom(UIScrollView(), inView: self.view) { (scroll) in
       scroll.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
       scroll.backgroundColor = UIColor.clearColor()
-      Constrain.inset(scroll, with: [.Top: 0, .Right: 0, .Bottom: 0, .Left: 0])
+      inset(scroll, with: [.Top: 0, .Right: 0, .Bottom: 0, .Left: 0])
 // Red line in scroll view to constrain height
       Architect.view(inView: scroll) {
         $0.backgroundColor = UIColor.redColor()
-        Constrain.inset($0, with: [.Top:300, .Bottom: 0])
-        Constrain.center($0, with: [.X: 0])
-        Constrain.size($0, with: [.Width: 20, .Height: 1300])
+        inset($0, with: [.Top:300, .Bottom: 0])
+        align(center: $0, with: [.X: 0])
+        size($0, with: [.Width: 20, .Height: 1300])
 // Yellow square in Red Line to mark where you are in scroll
         Architect.view(inView: $0) {
           $0.backgroundColor = UIColor.yellowColor()
-          Constrain.center($0, with: [.X: 0, .Y:0])
-          Constrain.size($0, with: [.Width: 10, .Height: 10])
+          align(center: $0, with: [.X: 0, .Y: 0])
+          size($0, with: [.Width: 10, .Height: 10])
         }
       }
     }

@@ -20,6 +20,10 @@ class PostTableViewModel<T>: TableViewModel {
   
   init() { }
   
+  func configureRequestsManager(manager: AppNetPostRequestsManager) {
+    requestManager = manager
+  }
+  
   func estimatedRowHeight() -> CGFloat {
     return 80.0
   }

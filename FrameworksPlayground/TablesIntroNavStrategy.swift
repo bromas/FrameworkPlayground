@@ -19,38 +19,7 @@ class tablesIntroNavStrategy<Int> : ControllerStrategy<TablesIntroController> {
       let tableViewWithModel = segue.destinationViewController as! TableViewWithModelG
       tableViewWithModel.setStrategy(TableWithVMTablesStrategy())
       
-      var configuration = CellNibConfiguration<AppNetPost>(identifier: "someCell", nib: UINib(nibName: "AppNetPost", bundle: NSBundle.mainBundle()))
-      
-      configuration.configureBlock = { [unowned self] cell, post in
-        
-        let appNetPostCell = cell as! AppNetPostCell
-        appNetPostCell.userNameLabel.text = post.user.userName
-        appNetPostCell.postLabel.text = post.text
-        
-        appNetPostCell.imageFilter = { identifier in
-          return post.user.userName == identifier
-        }
-        
-        let image = self.postDataProvider.localImageForUser(post.user)
-        switch image {
-        case let .found(image):
-          appNetPostCell.updateAvatarIcon(image)
-        case let .mocked(image):
-          appNetPostCell.updateAvatarIcon(image)
-          
-          let identifier = post.user.userName
-          self.postDataProvider.downloadImageForUser(post.user) { downloadedImage in
-            appNetPostCell.updateAvatarIconWithCheck(downloadedImage, filterIdentifier: identifier)
-          }
-          
-        }
-      }
-      
-      let tableViewModel = PostTableViewModel<AppNetPost>()
-      tableViewModel.registerCellConfiguration(configuration)
-      
-      tableViewWithModel.registerCellConfiguration(configuration)
-      tableViewWithModel.configure(viewModel: tableViewModel)
+      AppNetConfigurationManager.sharedInstance.configureSimpleSelectTable(tableViewWithModel)
     }
   }
   

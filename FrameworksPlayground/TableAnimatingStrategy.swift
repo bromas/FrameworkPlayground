@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 import StrategicControllers
-import ApplicationViewController
+import ActivityViewController
 
 typealias TableAnimatingStrategy = tableAnimatingStrategy<Int>
 class tableAnimatingStrategy<Int> : ControllerStrategy<TableViewWithModelAdditions> {

@@ -11,6 +11,7 @@ import UIKit
 import Argo
 import Alamofire
 import Runes
+import BCCoalescing
 
 class PostTableViewModelWoven: TableViewModel {
   
@@ -63,7 +64,7 @@ class PostTableViewModelWoven: TableViewModel {
     
     let globalConcurrentQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
     dispatch_async(globalConcurrentQueue) { [unowned self] in
-      self.coalescing.addCallbacksWithProgress({ (percent) -> Void in return }, andCompletion: { (data, response, error) -> Void in
+      self.coalescing.addCallbackWithProgress({ (percent) -> Void in return }, andCompletion: { (data, response, error) -> Void in
         dispatch_async(dispatch_get_main_queue()) {
           self.userIDIconMap[forUser.userID] = data as? UIImage
           self.updateTableWithUserIcon(forUser)
