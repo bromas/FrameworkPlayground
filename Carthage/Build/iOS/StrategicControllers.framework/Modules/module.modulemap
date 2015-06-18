@@ -1,0 +1,10 @@
+framework module StrategicControllers {
+  umbrella header "StrategicControllers.h"
+
+  export *
+  module * { export * }
+}
+
+module StrategicControllers.Swift {
+    header "StrategicControllers-Swift.h"
+}

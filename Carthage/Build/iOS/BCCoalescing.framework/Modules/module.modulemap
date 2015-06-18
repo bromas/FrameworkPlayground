@@ -1,0 +1,6 @@
+framework module BCCoalescing {
+  umbrella header "BCCoalescing.h"
+
+  export *
+  module * { export * }
+}
