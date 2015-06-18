@@ -22,5 +22,3 @@ build/
 *.dep
 # Cocoapods
 Pods
-# Carthage
-Carthage/
