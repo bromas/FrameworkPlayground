@@ -2,12 +2,10 @@
 A project for playing with design patterns and frameworks.
 
 #### Running this Project
-Install [Carthage](https://github.com/Carthage/Carthage) add run
+Dependencies are managed via [Carthage](https://github.com/Carthage/Carthage), but I have included them under source control so you can simply clone this repo and run the project.
 
-```shell
-carthage bootstrap
+```sh
+git clone https://github.com/bromas/FrameworkPlayground.git
 ```
-
-from the directory containing the Cartfile.
 
 Requires Xcode 6.3/Swift 1.2.
